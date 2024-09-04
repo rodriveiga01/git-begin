@@ -1,5 +1,3 @@
-import { Issue, FilterParams } from "../types"
-
 const ISSUES_PER_PAGE = 30
 
 export async function fetchGitLabIssues(params: FilterParams) {
@@ -72,7 +70,7 @@ export async function fetchGitLabIssues(params: FilterParams) {
     (issue) =>
       issue.stars_count >= params.minStars &&
       issue.stars_count <= params.maxStars &&
-      issue.forks_count >= params.minForks && 
+      issue.fork_count >= params.minForks && 
       issue.archived != true
   )
 
@@ -160,7 +158,7 @@ export async function fetchGitLabIssuesByCategory(params: FilterParams) {
     (issue) =>
       issue.stars_count >= params.minStars &&
       issue.stars_count <= params.maxStars &&
-      issue.forks_count >= params.minForks &&
+      issue.fork_count >= params.minForks &&
       issue.archived != true &&
       (params.isAssigned || !issue.is_assigned)
   )
@@ -261,7 +259,7 @@ export async function fetchGitLabIssuesByFramework(params: FilterParams) {
     (issue) =>
       issue.stars_count >= params.minStars &&
       issue.stars_count <= params.maxStars &&
-      issue.forks_count >= params.minForks &&
+      issue.fork_count >= params.minForks &&
       issue.archived != true &&
       (params.isAssigned || !issue.is_assigned)
   )
